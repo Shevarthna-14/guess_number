@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, jsonify
 import random
+import os
 
 app = Flask(__name__)
 app.secret_key = "guessgame_secret_key"
