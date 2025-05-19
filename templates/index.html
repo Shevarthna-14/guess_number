@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Guessing Game</title>
+</head>
+<body>
+  <h1>🎯 Guess the Number (1–100)</h1>
+  <input type="number" id="guessInput" placeholder="Enter your guess" />
+  <button onclick="submitGuess()">Guess</button>
+  <p id="result"></p>
+
+  <script>
+    function submitGuess() {
+      const guess = document.getElementById("guessInput").value;
+      fetch("/guess", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ guess: guess })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("result").innerText = data.result;
+      });
+    }
+  </script>
+</body>
+</html>
